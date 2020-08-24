@@ -1,18 +1,37 @@
-public class TheDecent {
+import java.util.*;
+import java.io.*;
+import java.math.*;
 
-    public static void main(String[] args) {
-        System.out.println(HighestMountain());
-    }
+/**
+ * The while loop represents the game.
+ * Each iteration represents a turn of the game
+ * where you are given inputs (the heights of the mountains)
+ * and where you have to print an output (the index of the mountain to fire on)
+ * The inputs you are given are automatically updated according to your last actions.
+ **/
+class Player {
 
-    public static int HighestMountain() {
-        int[] mountains = {10, 20, 30, 70, 60, 50, 40};
-        int mountainsCount = mountains.length;
-        int highestMountain = mountains[0];
-        for (int i = 1; i < mountainsCount; i++) {
-            if (mountains[i] > highestMountain) {
-                highestMountain = mountains[i];
+    public static void main(String args[]) {
+        Scanner in = new Scanner(System.in);
+
+
+        // game loop
+        while (true) {
+            int highestMount = 0;
+            int highestMountIndex = 0;
+
+            for (int i = 0; i < 8; i++) {
+                int mountainH = in.nextInt(); // represents the height of one mountain.
+                if (mountainH > highestMount) {
+                    highestMount = mountainH;
+                    highestMountIndex = i;
+                }
             }
+
+            // Write an action using System.out.println()
+            // To debug: System.err.println("Debug messages...");
+
+            System.out.println(highestMountIndex); // The index of the mountain to fire on.
         }
-        return highestMountain;
     }
 }
