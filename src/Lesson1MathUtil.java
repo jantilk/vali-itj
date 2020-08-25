@@ -1,16 +1,87 @@
+import java.util.Scanner;
+
 public class Lesson1MathUtil {
 
     public static void main(String[] args) {
-        System.out.println("min = " + min(1, 5));
-        System.out.println("max = " + max(1, 5));
-        System.out.println("abs = " + abs(-1));
-        System.out.println("isEven = " + isEven(2));
-        System.out.println("min3 = " + min(1,1,3));
-        System.out.println("max3 = " + max(1,3,3));
+        Scanner scanner = new Scanner(System.in);
+        //int n = scanner.nextInt();
+        //int o = scanner.nextInt();
+        //int p = scanner.nextInt();
+
+        //Küsib funktsiooni
+
+
+        //küsi lõpus kas tahad uuesti proovida
+        Boolean uuesti = true;
+
+        while (uuesti) {
+            System.out.println("Sisesta valik: min, max, abs, paaris, min3, max3");
+            String rida = scanner.nextLine();
+
+            //Küsib vajalikke arve
+            if (rida.equals("min")) {
+                System.out.println("Sisesta kaks täisarvu:");
+                int n = scanner.nextInt();
+                int o = scanner.nextInt();
+                System.out.println("min = " + min(n, o));
+            } else if (rida.equals("max")) {
+                System.out.println("Sisesta kaks täisarvu:");
+                int n = scanner.nextInt();
+                int o = scanner.nextInt();
+                System.out.println("max = " + max(n, o));
+            } else if (rida.equals("abs")) {
+                System.out.println("Sisesta üks täisarv:");
+                int n = scanner.nextInt();
+                System.out.println("abs = " + abs(n));
+            } else if (rida.equals("paaris")) {
+                System.out.println("Sisesta paaris või paaritu arv:");
+                int n = scanner.nextInt();
+                System.out.println("paaris = " + isEven(n));
+            } else if (rida.equals("min3")) {
+                System.out.println("Sisesta kolm täisarvu:");
+                int n = scanner.nextInt();
+                int o = scanner.nextInt();
+                int p = scanner.nextInt();
+                System.out.println("min3 = " + min(n, o, p));
+            } else if (rida.equals("max3")) {
+                System.out.println("Sisesta kolm täisarvu:");
+                int n = scanner.nextInt();
+                int o = scanner.nextInt();
+                int p = scanner.nextInt();
+                System.out.println("max3 = " + max(n, o, p));
+            } else {
+                System.out.println("proovi uuesti");
+            }
+
+            System.out.println("Kas tahad uuesti proovida: jah, ei");
+            scanner.nextLine();
+            String newTry = scanner.nextLine();
+            if (newTry.equals("jah")) {
+                uuesti = true;
+            } else {
+                uuesti = false;
+            }
+
+        }
+
+
+
+
+
+
+        //System.out.println("isEven = " + isEven(n));
+        //System.out.println("min3 = " + min(1,1,3));
+        //System.out.println("max3 = " + max(1,3,3));
+
+
 
     }
 
+
+
     public static int min(int a, int b){
+
+
         // TODO tagasta a ja b väikseim väärtus
         int minValue;
         if (a<b) {
