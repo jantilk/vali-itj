@@ -7,11 +7,12 @@ public class Lesson2 {
 
 
     public static void main(String[] args) {
-        //exercise1();
+        exercise1();
         //exercise2(4);
         //exercise3(2, 5);
-        fibonacci(6);
-        exercise5();
+        //fibonacci(6);
+        //exercise5();
+        //exercise7();
     }
 
     public static void exercise1() {
@@ -78,16 +79,60 @@ public class Lesson2 {
             }
             System.out.println(fib[n-1]);
         }
-
-
-
         // 0, 1, 1, 2, 3, 5, 8, 13, 21
         // Tagasta fibonacci jada n element
-        return 0;
+        return fib[n-1];
     }
 
     public static void exercise5() {
         // https://onlinejudge.org/index.php?option=onlinejudge&Itemid=8&page=show_problem&problem=36
+
+        // Sisend kaks täisarvu
+        int i = scanner.nextInt();
+        int j = scanner.nextInt();
+        // display input
+        System.out.println(i + " " + j);
+
+        // result array init
+        int[] arr = new int[j - i + 1];
+        // result array index init
+        int arrIndex = 0;
+        // clone of input i
+        int iClone = i;
+        // arrItemCorrector
+        int corrector = 0;
+
+        for (int k = i; k <= j; k++) {
+            // add 1 to cycle length counter
+            int cycleLengthCounter = 1;
+            // algorithm itself
+            while (i != 1) {
+                if (i % 2 != 0) {
+                    i = 3 * i + 1;
+                } else {
+                    i = i / 2;
+                }
+                cycleLengthCounter++;
+            }
+            // adding cycle length into the array
+            arr[arrIndex] = cycleLengthCounter;
+            arrIndex++;
+            corrector++;
+            // getting the next number to calculate
+            i = iClone + corrector;
+        }
+
+        // calculating the length of the biggest cycle
+        int arrSize = arr.length;
+        int maxCycle = 0;
+        for (i = 0; i < arrSize; i++) {
+            if (arr[i] > maxCycle) {
+                maxCycle = arr[i];
+            }
+        }
+
+        // display output
+        System.out.print(iClone + " " + j + " " + maxCycle);
     }
 
     public static void exercise6() {
@@ -105,6 +150,10 @@ public class Lesson2 {
         BigDecimal b = new BigDecimal("394486820345");
         BigDecimal c = new BigDecimal("15");
         BigDecimal d = new BigDecimal("4");
+        BigDecimal result = a.multiply((b.multiply(c)).subtract(d));
+
+        System.out.println(result);
+
     }
 
     public static void exercise8() {
