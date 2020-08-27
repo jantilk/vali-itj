@@ -1,5 +1,12 @@
+import java.io.FileNotFoundException;
 import java.math.BigDecimal;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Scanner;
+import java.io.File;
+
+import static java.lang.Integer.parseInt;
 
 
 public class Lesson2 {
@@ -7,12 +14,14 @@ public class Lesson2 {
 
 
     public static void main(String[] args) {
-        exercise1();
+        //exercise1();
         //exercise2(4);
         //exercise3(2, 5);
         //fibonacci(6);
         //exercise5();
+        exercise6();
         //exercise7();
+        //exercise8();
     }
 
     public static void exercise1() {
@@ -142,6 +151,22 @@ public class Lesson2 {
             b) prindib konsoolile päeva, mil külastajaid oli kõige rohkem.
             Faili asukoht tuleb programmile ette anda käsurea parameetrina.
          */
+        HashMap<String, Integer> visitMap = new HashMap<>();
+
+        try {
+            File visits = new File("C:\\Users\\Public\\visits.txt");
+            Scanner fileScanner = new Scanner(visits);
+            while (fileScanner.hasNextLine()) {
+                String data = fileScanner.nextLine();
+                visitMap.put(data.substring(0, 10), parseInt(data.substring(12, 15)));
+                System.out.println(data);
+            }
+            fileScanner.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Error");
+            e.printStackTrace();
+        }
+        System.out.println(visitMap);
     }
 
     public static void exercise7() {
